@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_zoom_drawer/src/drawer_controller.dart';
 import 'package:sesh_prostuti/utils/light_colors.dart';
 import 'package:sesh_prostuti/widgets/grid_item.dart';
 import 'package:sesh_prostuti/widgets/list_new_exam.dart';
@@ -11,7 +12,8 @@ import 'package:sesh_prostuti/widgets/list_new_exam.dart';
 class Page1 extends StatefulWidget {
   final NotchBottomBarController? controller;
 
-  const Page1({Key? key, this.controller}) : super(key: key);
+  final ZoomDrawerController zoomDrawerController;
+  const Page1({Key? key, this.controller, required this.zoomDrawerController}) : super(key: key);
 
   @override
   _Page1State createState() => _Page1State();
@@ -225,6 +227,8 @@ class _Page1State extends State<Page1> {
                     icon: Icon(Icons.menu, color: Colors.white),
                     onPressed: () {
                       // Handle menu action
+                      widget.zoomDrawerController.toggle?.call();
+
                     },
                   ),
                   Text(

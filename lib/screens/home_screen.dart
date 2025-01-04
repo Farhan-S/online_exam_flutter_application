@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:flutter_zoom_drawer/src/drawer_controller.dart';
 import 'package:sesh_prostuti/screens/home_pages/page_one.dart';
 import 'package:sesh_prostuti/utils/bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final ZoomDrawerController zoomDrawerController;
+  const HomeScreen({super.key, required this.zoomDrawerController});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -32,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     /// widget list
     final List<Widget> bottomBarPages = [
       Page1(
+        zoomDrawerController:widget.zoomDrawerController,
         controller: (_controller),
       ),
       const Page2(),

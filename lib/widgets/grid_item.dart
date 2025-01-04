@@ -32,22 +32,24 @@ class GridItem extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            iconPath, // Correct way to load asset SVGs
-            height: 40,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            itemName,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500,
-              color: Colors.black87
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12.0,right: 12,top: 12,bottom: 12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SvgPicture.asset(
+              iconPath, // Correct way to load asset SVGs
+              height: 48,
             ),
-          ),
-        ],
+            Text(
+              itemName,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500,
+                color: Colors.black87
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
