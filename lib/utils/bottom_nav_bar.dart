@@ -7,6 +7,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int maxCount;
   final List<Widget> bottomBarPages;
   final PageController pageController;
+  final Color textColor;
+  final Color iconColor;
+  final Color color;
 
   const CustomBottomNavigationBar({
     super.key,
@@ -14,6 +17,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
     required this.maxCount,
     required this.bottomBarPages,
     required this.pageController,
+    required this. textColor,
+    required this.iconColor,
+    required this.color,
   });
 
   @override
@@ -25,59 +31,59 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return AnimatedNotchBottomBar(
       /// Provide NotchBottomBarController
       notchBottomBarController: controller,
-      color: Colors.white,
+      color: color,
       showLabel: true,
       textOverflow: TextOverflow.visible,
       maxLine: 1,
       shadowElevation: 4,
       kBottomRadius: 0,
-      notchColor: Colors.white,
+      notchColor: color,
       removeMargins: true,
       bottomBarWidth: 500,
       showShadow: true,
       durationInMilliSeconds: 300,
-      itemLabelStyle: const TextStyle(fontSize: 10),
+      itemLabelStyle: TextStyle(fontSize: 10,color: Colors.white),
       elevation: 9,
-      showBlurBottomBar: true,
+      showBlurBottomBar: false,
       bottomBarItems: const [
         BottomBarItem(
           inActiveItem: Icon(
             Icons.home_outlined,
-            color: Colors.blueGrey,
+            color: Colors.white,
           ),
           activeItem: Icon(
             Icons.home_filled,
-            color: Colors.black,
+            color: Colors.white,
           ),
           itemLabel: 'Page 1',
         ),
         BottomBarItem(
-          inActiveItem: Icon(Icons.star, color: Colors.blueGrey),
+          inActiveItem: Icon(Icons.star, color: Colors.white),
           activeItem: Icon(
             Icons.star,
-            color: Colors.black,
+            color: Colors.white,
           ),
           itemLabel: 'Page 2',
         ),
         BottomBarItem(
           inActiveItem: Icon(
             Icons.settings,
-            color: Colors.blueGrey,
+            color: Colors.white,
           ),
           activeItem: Icon(
             Icons.settings,
-            color: Colors.black,
+            color: Colors.white,
           ),
           itemLabel: 'Page 3',
         ),
         BottomBarItem(
           inActiveItem: Icon(
             Icons.person,
-            color: Colors.blueGrey,
+            color: Colors.white,
           ),
           activeItem: Icon(
             Icons.person,
-            color: Colors.black,
+            color: Colors.white,
           ),
           itemLabel: 'Page 4',
         ),

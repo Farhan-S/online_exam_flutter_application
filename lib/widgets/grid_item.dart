@@ -33,24 +33,29 @@ class GridItem extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 12.0,right: 12,top: 12,bottom: 12),
+        padding: const EdgeInsets.only(left: 12.0, right: 12, top: 6, bottom: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              iconPath, // Correct way to load asset SVGs
-              height: 48,
+            Image.asset(
+              iconPath, // The path to your PNG file
+              // Adjust the size as needed
+              height: 65,
+              fit: BoxFit.contain, // Ensures the image scales properly
             ),
             Text(
               itemName,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500,
-                color: Colors.black87
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
               ),
             ),
           ],
         ),
       ),
+
     );
   }
 }

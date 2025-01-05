@@ -124,8 +124,8 @@ class _Page1State extends State<Page1> {
                       itemBuilder: (context, index) {
                         return GridItem(
                           itemName: ItemName.itemNames[index],
-                          iconPath: "lib/assets/test-exam.svg",
-                          backgroundColor: LightColors.colors[index],
+                          iconPath: ItemIcons.itemIcons[index],
+                          backgroundColor: Colors.white,
                         );
                       },
                     ),
@@ -164,10 +164,15 @@ class _Page1State extends State<Page1> {
                         color: Colors.transparent,
 
                       ),
-                      child: SvgPicture.asset(
-                        "lib/assets/Card.svg", // Correct way to load asset SVGs
-                        width: MediaQuery.of(context).size.width,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12), // Corner radius of 12
+                        child: Image.asset(
+                          "lib/assets/card_live_exam.png", // Correct way to load asset PNGs
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover, // Ensures the image covers the area properly
+                        ),
                       ),
+
 
                     ),
                   ),
@@ -214,15 +219,26 @@ class _Page1State extends State<Page1> {
 
 }
 
+
 class ItemName{
  static List<String> itemNames = [
-   "বিসিএস পরীক্ষা","সরকারি প্রাথমিক", "বিষয়ভিত্তিক প্রস্তুতি","ব্যাংক জব","বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি", "এসএসসি পরীক্ষা"
+   "বিসিএস পরীক্ষা",
+   "সরকারি প্রাথমিক",
+   "বিষয়ভিত্তিক প্রস্তুতি",
+   "ব্যাংক জব",
+   "বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি",
+   "এসএসসি পরীক্ষা"
 
   ];
 }
 class ItemIcons{
   static List<String> itemIcons = [
-    "lib/assets/test-exam.svg","lib/assets/school.svg", "lib/assets/book.svg","lib/assets/bank.svg", "lib/assets/university.svg", "lib/assets/ssc.svg"
+    "lib/assets/3d_icons/books.png",
+    "lib/assets/3d_icons/education-blocks.png",
+    "lib/assets/3d_icons/english-class.png",
+    "lib/assets/3d_icons/abacus.png",
+    "lib/assets/3d_icons/graduation-hat.png",
+    "lib/assets/3d_icons/blood-report.png"
 
   ];
 }
