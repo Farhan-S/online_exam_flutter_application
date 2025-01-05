@@ -6,7 +6,10 @@ import 'package:sesh_prostuti/utils/bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   final ZoomDrawerController zoomDrawerController;
-  const HomeScreen({super.key, required this.zoomDrawerController});
+  const HomeScreen({
+    super.key,
+    required this.zoomDrawerController,
+  });
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -16,15 +19,26 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Controller to handle PageView and also handles initial page
   final _pageController = PageController(initialPage: 0);
 
+  /// ValueNotifier for Navbar Color
+  final ValueNotifier<Color> _navbarColorNotifier = ValueNotifier<Color>(Color.fromRGBO(52, 10, 51, 1));
+
+
   /// Controller to handle bottom nav bar and also handles initial page
   final NotchBottomBarController _controller = NotchBottomBarController(index: 0);
 
+  final List<Color> _darkColors = [
+    Color.fromRGBO(38, 26, 23, 1),
+    Color.fromRGBO(52, 10, 51, 1),
+    Color.fromRGBO(53, 0, 0, 1),
+  ];
+  /// Determine if the navbar color is dark
+  bool get isNavbarDark => _darkColors.contains(_navbarColorNotifier.value);
   int maxCount = 5;
 
   @override
   void dispose() {
     _pageController.dispose();
-
+    _navbarColorNotifier.dispose();
     super.dispose();
   }
 //end notched navigation bar
@@ -36,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Page1(
         zoomDrawerController:widget.zoomDrawerController,
         controller: (_controller),
+        navbarColorNotifier: _navbarColorNotifier,
       ),
       const Page2(),
       const Page3(),
@@ -43,6 +58,45 @@ class _HomeScreenState extends State<HomeScreen> {
       const Page5(),
     ];
     return Scaffold(
+      appBar:  PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: ValueListenableBuilder<Color>(
+          valueListenable: _navbarColorNotifier,
+          builder: (context, color, child) {
+            final textColor = isNavbarDark ? Colors.white : Colors.black;
+            final iconColor = isNavbarDark ? Colors.white : Colors.black;
+
+            return AppBar(
+              backgroundColor: color, // Dynamically updated color
+              elevation: 0,
+              title:  Center(child: Text('Sesh Prostuti',style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: textColor
+              ),)),
+              leading: IconButton(
+                icon: Icon(Icons.menu,color: iconColor,),
+                onPressed: () {
+                  widget.zoomDrawerController.toggle?.call();
+                },
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: IconButton(
+                    icon: const CircleAvatar(
+                      radius: 16,
+                      backgroundImage: AssetImage('lib/assets/Avatar.png'),
+                    ),
+                    onPressed: () {
+                      // Handle profile action
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),

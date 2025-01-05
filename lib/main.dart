@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         controller: zoomDrawerController,
         style: DrawerStyle.defaultStyle,
         menuScreen: MenuScreen (),
-        mainScreen: HomeScreen(zoomDrawerController:zoomDrawerController),
+        mainScreen: HomeScreen(zoomDrawerController:zoomDrawerController,),
         borderRadius: 24.0,
         showShadow: true,
         mainScreenTapClose: true,
